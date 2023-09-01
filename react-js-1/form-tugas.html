@@ -1,0 +1,122 @@
+<html>
+
+<head>
+    <title>Form Tugas Baru</title>
+</head>
+
+<body>
+    <h2>Form Tugas Baru</h2>
+
+    <form id="formTugas">
+        <label for="formName">Tugas: </label>
+        <input type="text" id="formName" name="formName" required>
+
+        <button type="button" onclick="addTask()">Tambah</button>
+    </form>
+
+    <h3>List Tugas</h3>
+    <ol id="listTask"></ol>
+
+    <p>Total tugas belum selesai: <span id="taskCount">0</span></p>
+
+    <button id="markAll" onclick="markAll()">Tandai Semua Selesai</button> <button id="deleteAll"
+        onclick="deleteAll()">Hapus Semua Tugas</button>
+
+    <script>
+        var id = 0;
+
+        function addTask() {
+
+            var inputTugas = document.getElementById("formName").value;
+            var listTask = document.getElementById("listTask");
+            var taskCount = document.getElementById("taskCount");
+
+            if (inputTugas == "") {
+                alert("Masukkan Tugas!")
+            } else {
+                var tugasLi = document.createElement("li");
+                tugasLi.textContent = " " + inputTugas + " ";
+
+                var delButton = document.createElement("button")
+                delButton.textContent = "Hapus";
+                delButton.setAttribute("onclick", "deleteTask(" + id + ")")
+
+                var checkbox = document.createElement("input");
+                checkbox.type = "checkbox";
+                checkbox.setAttribute("onchange", "markTask("+id+")");
+
+                tugasLi.insertBefore(checkbox, tugasLi.firstChild);
+                tugasLi.appendChild(delButton);
+
+                tugasLi.setAttribute("id", id)
+                tugasLi.setAttribute("name", "task")
+
+                listTask.appendChild(tugasLi);
+
+                id++;
+                taskCount.textContent++;
+            }
+
+        }
+
+        function markTask(i) {
+            var checkbox = document.getElementById(i).firstChild;
+            var taskCount = document.getElementById("taskCount");
+
+            if (checkbox.checked) {
+                taskCount.textContent--
+                if(taskCount.textContent==0){
+                    alert("Semua Tugas Telah Selesai")
+                }
+            } else {
+                taskCount.textContent++
+            }
+        }
+
+        function deleteTask(i) {
+
+            var listTask = document.getElementById(i);
+            var taskCount = document.getElementById("taskCount");
+
+            console.log(i)
+            console.log(listTask);
+            console.log(listTask.firstChild);
+            
+            if (listTask.firstChild.checked == false) {
+                taskCount.textContent--;
+            }
+            listTask.remove();
+
+        }
+
+        function markAll() {
+
+            var listTask = document.getElementsByName("task");
+            var taskCount = document.getElementById("taskCount");
+
+            if(listTask.length>0){
+                for (var i = 0, n = listTask.length; i < n; i++) {
+                    listTask[i].firstChild.setAttribute("checked", true);
+                }
+
+                alert("Semua Tugas Telah Selesai!")
+            }
+
+            taskCount.textContent = 0;
+
+        }
+
+        function deleteAll() {
+
+            var listTask = document.getElementById("listTask");
+            var taskCount = document.getElementById("taskCount");
+
+            listTask.innerHTML = "";
+            taskCount.textContent = 0;
+
+        }
+    </script>
+
+</body>
+
+</html>
