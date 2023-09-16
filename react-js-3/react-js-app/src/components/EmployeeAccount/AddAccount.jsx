@@ -35,20 +35,19 @@ export default function AddAccount() {
 
         if (validateData()) {
 
-            const ids = uuid();
-            let uniqueId = parseFloat(ids.replace(/-/g, ''), 8);
+            let ids = uuid();
             let date = new Date();
             const currentDate = moment(date).format('DD-MM-YYYY HH:mm:ss')
 
             EmployeesAccount.push({
-                id: uniqueId,
+                id: ids,
                 name: name,
                 type: type,
                 accountNo: accountNo,
                 cdate: currentDate,
                 mdate: currentDate,
                 ddate: '',
-                employeeId: parseFloat(empId)
+                employeeId: empId
             })
 
             setName('')

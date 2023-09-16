@@ -35,7 +35,7 @@ export default function EditAccount(props) {
       const currentDate = moment(new Date()).format('DD-MM-YYYY HH:mm:ss')
 
       Training.forEach((train) => {
-        if (train.id === item.id) {
+        if (train.id.toString() === item.id.toString()) {
           train.teacher = teacher
           train.theme = theme
           train.mdate = currentDate
@@ -87,7 +87,7 @@ export default function EditAccount(props) {
         Edit
       </Button>
       <Modal isOpen={modalEdit} toggle={handleModalEdit}>
-        <ModalHeader className='modal-header'>Edit Employee</ModalHeader>
+        <ModalHeader className='modal-header'>Edit Training</ModalHeader>
         <ModalBody>
           <Form>
             <Row>

@@ -48,17 +48,15 @@ export default function AddEmployee() {
 
         if (validateData()) {
 
-            const ids = uuid();
-            const idDetail = uuid();
-            let uniqueId = parseFloat(ids.replace(/-/g, ''), 8);
-            let uniqueIdDetail = parseFloat(idDetail.replace(/-/g, ''), 8);
+            let ids = uuid();
+            let idDetail = uuid();
             let date = new Date();
             const currentDate = moment(date).format('DD-MM-YYYY HH:mm:ss')
             var stat = status ? "Active" : "Inactive"
             let bdate = moment(birthdate).format('DD-MM-YYYY')
 
             EmployeeDetail.push({
-                id: uniqueIdDetail,
+                id: idDetail,
                 npwp: npwp,
                 nik: nik,
                 cdate: currentDate,
@@ -67,7 +65,7 @@ export default function AddEmployee() {
             })
 
             Employees.push({
-                id: uniqueId,
+                id: ids,
                 name: name,
                 address: address,
                 status: stat,
@@ -75,7 +73,7 @@ export default function AddEmployee() {
                 cdate: currentDate,
                 mdate: currentDate,
                 ddate: '',
-                detail: uniqueIdDetail
+                detail: idDetail
             })
 
             setName('')

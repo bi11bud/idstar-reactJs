@@ -20,7 +20,7 @@ export default function EditAccount(props) {
   const navigate = useNavigate();
 
   const { item, detail } = props.employee;
-  const empDetail = EmployeesDetail.find((d) => d.id === detail.detail);
+  const empDetail = EmployeesDetail.find((d) => d.id.toString() === detail.detail.toString());
   const [accountName, setAccountName] = useState(item.name);
   const [accountNo, setAccountNo] = useState(item.accountNo);
   const [type, setType] = useState(item.type);
@@ -38,7 +38,7 @@ export default function EditAccount(props) {
       const currentDate = moment(new Date()).format('DD-MM-YYYY HH:mm:ss')
 
       EmployeesAccount.forEach((acc) => {
-        if (acc.id === item.id && acc.employeeId === detail.id) {
+        if (acc.id.toString() === item.id.toString() && acc.employeeId.toString() === detail.id.toString()) {
           acc.name = accountName
           acc.type = type
           acc.accountNo = accountNo
@@ -96,7 +96,7 @@ export default function EditAccount(props) {
         Edit
       </Button>
       <Modal isOpen={modalEdit} toggle={handleModalEdit}>
-        <ModalHeader className='modal-header'>Edit Employee</ModalHeader>
+        <ModalHeader className='modal-header'>Edit Account</ModalHeader>
         <ModalBody>
           <Form>
             <Row>

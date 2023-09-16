@@ -54,7 +54,7 @@ export default function EditEmployee(props) {
     if (validateData()) {
       var stat = status ? "Active" : "Inactive"
       Employees.forEach((emp) => {
-        if (emp.id === item.id) {
+        if (emp.id.toString() === item.id.toString()) {
           emp.name = name
           emp.birthdate = bdate
           emp.address = address
@@ -64,7 +64,7 @@ export default function EditEmployee(props) {
       })
 
       EmployeesDetail.forEach((empDetail) => {
-        if (empDetail.id === detail.id) {
+        if (empDetail.id.toString() === detail.id.toString()) {
           empDetail.nik = nik
           empDetail.npwp = npwp
           empDetail.mdate = currentDate

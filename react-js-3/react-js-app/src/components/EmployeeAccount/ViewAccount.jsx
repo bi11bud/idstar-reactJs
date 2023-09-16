@@ -18,7 +18,7 @@ export default function ViewAccount(props) {
     }
 
     const { item, detail } = props.employee;
-    const empDetail = EmployeesDetail.find((d) => d.id === detail.detail);
+    const empDetail = EmployeesDetail.find((d) => d.id.toString() === detail.detail.toString());
     const name = detail.name
     const nik = empDetail.nik
     const accountName = item.name
@@ -33,7 +33,7 @@ export default function ViewAccount(props) {
                 View
             </Button>
             <Modal isOpen={modalView} toggle={handleModalView}>
-                <ModalHeader className='modal-header'>Detail Employee</ModalHeader>
+                <ModalHeader className='modal-header'>Detail Account</ModalHeader>
                 <ModalBody>
                     <Row>
                         <Col>Name</Col>

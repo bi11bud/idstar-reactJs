@@ -40,7 +40,7 @@ export default function EditEmployeeTraining(props) {
       const currentDate = moment(new Date()).format('DD-MM-YYYY HH:mm:ss')
 
       EmployeeTraining.forEach((empTrain) => {
-        if (empTrain.id === item.id) {
+        if (empTrain.id.toString() === item.id.toString()) {
           empTrain.trainingDate = moment(trainingDate).format('DD-MM-YYYY')
           empTrain.mdate = currentDate
         }
@@ -86,7 +86,7 @@ export default function EditEmployeeTraining(props) {
         Edit
       </Button>
       <Modal isOpen={modalEdit} toggle={handleModalEdit}>
-        <ModalHeader className='modal-header'>Edit Employee</ModalHeader>
+        <ModalHeader className='modal-header'>Edit Employee Training</ModalHeader>
         <ModalBody>
           <Form>
             <Row>

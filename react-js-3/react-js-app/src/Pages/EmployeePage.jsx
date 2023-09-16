@@ -7,6 +7,7 @@ import AddEmployee from "../components/Employee/AddEmployee"
 import ViewEmployee from "../components/Employee/ViewEmployee"
 import EditEmployee from "../components/Employee/EditEmployee"
 import DeleteEmployee from "../components/Employee/DeleteEmployee"
+import { useEffect } from "react";
 
 export const EmployeePage = () => {
 
@@ -31,6 +32,16 @@ export const EmployeePage = () => {
     function loginPage() {
         navigate('/');
     }
+
+    // const [employees, setEmployees] = useState([]);
+    // const [employeeDetails, setEmployeeDetails] = useState([]);
+
+    useEffect(() => {
+        // Fetch and update employees and employeeDetails
+        // Example:
+        // fetchEmployees().then((data) => setEmployees(data));
+        // fetchEmployeeDetails().then((data) => setEmployeeDetails(data));
+    }, []);
 
     return (
         <>
@@ -84,7 +95,7 @@ export const EmployeePage = () => {
                         {
                             Employees && Employees.length > 0
                                 ? Employees.map((item, index) => {
-                                    const detail = EmployeesDetail.find((d) => d.id === item.detail);
+                                    const detail = EmployeesDetail.find((d) => d.id.toString() === item.detail.toString());
                                     const data = { item, detail }
 
                                     return (

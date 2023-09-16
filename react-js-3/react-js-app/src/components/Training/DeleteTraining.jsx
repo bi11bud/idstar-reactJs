@@ -22,7 +22,7 @@ export default function DeleteTraining(props) {
 
         //delete Employee Training
         for (let i = EmployeeTraining.length - 1; i >= 0; i--) {
-            if (EmployeeTraining[i].trainingId === item.id) {
+            if (EmployeeTraining[i].trainingId.toString() === item.id.toString()) {
                 EmployeeTraining.splice(i, 1);
             }
         }

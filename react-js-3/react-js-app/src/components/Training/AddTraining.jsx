@@ -31,13 +31,12 @@ export default function AddTraining() {
 
         if (validateData()) {
 
-            const ids = uuid();
-            let uniqueId = parseFloat(ids.replace(/-/g, ''), 8);
+            let ids = uuid();
             let date = new Date();
             const currentDate = moment(date).format('DD-MM-YYYY HH:mm:ss')
 
             Training.push({
-                id: uniqueId,
+                id: ids,
                 teacher: teacher,
                 theme: theme,
                 cdate: currentDate,

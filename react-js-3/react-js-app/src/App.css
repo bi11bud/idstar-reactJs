@@ -80,3 +80,13 @@ button {
   background: linear-gradient(#9796F0, #FBC7D4);
   color: white;
 }
+
+.btn-link{
+  /* align-items: center; */
+  background: none;
+  border: none;
+  color: #7439db;
+  text-decoration: underline;
+  cursor: pointer;
+  width: fit-content;
+}

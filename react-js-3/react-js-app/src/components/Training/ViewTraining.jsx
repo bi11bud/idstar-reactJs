@@ -31,7 +31,7 @@ export default function ViewAccount(props) {
                 View
             </Button>
             <Modal isOpen={modalView} toggle={handleModalView}>
-                <ModalHeader className='modal-header'>Detail Employee</ModalHeader>
+                <ModalHeader className='modal-header'>Detail Training</ModalHeader>
                 <ModalBody>
                     <Row>
                         <Col>Teacher</Col>
@@ -56,8 +56,8 @@ export default function ViewAccount(props) {
 
                                 EmployeesTraining.map((empTrain) => {
                                     if (empTrain.trainingId === item.id) {
-                                        const emp = Employees.find((d) => d.id === empTrain.employeeId);
-                                        const empDetail = EmployeesDetail.find((d) => d.id === emp.detail);
+                                        const emp = Employees.find((d) => d.id.toString() === empTrain.employeeId.toString());
+                                        const empDetail = EmployeesDetail.find((d) => d.id.toString() === emp.detail.toString());
                                         return (
                                             <tr key={empTrain.id}>
                                                 <td>- {emp.name} - {empDetail.nik}</td>

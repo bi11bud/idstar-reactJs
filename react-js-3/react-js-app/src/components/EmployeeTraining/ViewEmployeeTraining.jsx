@@ -31,7 +31,7 @@ export default function ViewEmployeeTraining(props) {
                 View
             </Button>
             <Modal isOpen={modalView} toggle={handleModalView}>
-                <ModalHeader className='modal-header'>Detail Employee</ModalHeader>
+                <ModalHeader className='modal-header'>Detail Employee Training</ModalHeader>
                 <ModalBody>
                     <Row>
                         <Col>Name</Col>

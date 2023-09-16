@@ -41,15 +41,14 @@ export default function AddEmployeeTraining() {
 
         if (validateData()) {
 
-            const ids = uuid();
-            let uniqueId = parseFloat(ids.replace(/-/g, ''), 8);
+            let ids = uuid();
             let date = new Date();
             const currentDate = moment(date).format('DD-MM-YYYY HH:mm:ss')
 
             EmployeeTraining.push({
-                id: uniqueId,
-                employeeId: parseFloat(empId),
-                trainingId: parseFloat(trainingId),
+                id: ids,
+                employeeId: empId,
+                trainingId: trainingId,
                 trainingDate: moment(trainingDate).format('DD-MM-YYYY'),
                 cdate: currentDate,
                 mdate: currentDate,
@@ -120,7 +119,7 @@ export default function AddEmployeeTraining() {
                                 <option value="">Select an employee</option>
                                 {
                                     Employees.map((employee) => {
-                                        const empDetail = EmployeesDetail.find((d) => d.id === employee.detail)
+                                        const empDetail = EmployeesDetail.find((d) => d.id.toString() === employee.detail.toString())
                                         return (
                                             <option key={employee.id} value={employee.id}>
                                                 {employee.name} - {empDetail.nik}
@@ -132,7 +131,7 @@ export default function AddEmployeeTraining() {
                         </Row>
                         <br />
                         <Row>
-                            <Col>Employee</Col>
+                            <Col>Training</Col>
                             <Forms.Select
                                 aria-label="Default select example"
                                 id="empTrainingId"

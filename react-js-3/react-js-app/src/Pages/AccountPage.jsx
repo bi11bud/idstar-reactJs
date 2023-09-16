@@ -82,7 +82,7 @@ export const AccountPage = () => {
                         {
                             EmployeesAccount && EmployeesAccount.length > 0
                                 ? EmployeesAccount.map((item, index) => {
-                                    const detail = Employees.find((d) => d.id === item.employeeId);
+                                    const detail = Employees.find((d) => d.id.toString() === item.employeeId.toString());
                                     const data = { item, detail }
                                     return (
                                         <tr key={item.id}>

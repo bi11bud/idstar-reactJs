@@ -30,14 +30,14 @@ export default function DeleteEmployee(props) {
         
         //delete Employee Account
         for (let i = EmployeesAccount.length - 1; i >= 0; i--) {
-            if (EmployeesAccount[i].employeeId === item.id) {
+            if (EmployeesAccount[i].employeeId.toString() === item.id.toString()) {
                 EmployeesAccount.splice(i, 1);
             }
         }
 
         //delete Employee Training
         for (let i = EmployeeTraining.length - 1; i >= 0; i--) {
-            if (EmployeeTraining[i].employeeId === item.id) {
+            if (EmployeeTraining[i].employeeId.toString() === item.id.toString()) {
                 EmployeeTraining.splice(i, 1);
             }
         }

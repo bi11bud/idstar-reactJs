@@ -85,9 +85,9 @@ export const EmployeeTrainingPage = () => {
                         {
                             EmployeesTraining && EmployeesTraining.length > 0
                                 ? EmployeesTraining.map((item, index) => {
-                                    const emp = Employees.find((d) => d.id === item.employeeId);
-                                    const empDetail = EmployeesDetail.find((d) => d.id === emp.detail);
-                                    const train = Training.find((d) => d.id === item.trainingId);
+                                    const emp = Employees.find((d) => d.id.toString() === item.employeeId.toString());
+                                    const empDetail = EmployeesDetail.find((d) => d.id.toString() === emp.detail.toString());
+                                    const train = Training.find((d) => d.id.toString() === item.trainingId.toString());
                                     const data = { item, emp, empDetail, train }
                                     return (
                                         <tr key={item.id}>
